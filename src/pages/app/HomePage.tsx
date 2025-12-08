@@ -1,8 +1,10 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
+import ActivityItem from '../../components/ActivityItem';
 import GradientHeader from '../../components/GradientHeader';
 import NavBar from '../../components/NavBar';
+import PolicyCard from '../../components/PolicyCard';
 import ProtectionCard from '../../components/ProtectionCard';
 
 const protectionData = [
@@ -80,6 +82,42 @@ export default function HomePage() {
                             }}
                         />
                     ))}
+                </View>
+
+                {/* Active Policy Section */}
+                <View className="px-4 mt-8">
+                    <Text className="text-light text-xl font-bold mb-4">Polis Aktif Anda</Text>
+                    <PolicyCard
+                        icon="shield"
+                        title="Proteksi AASF"
+                        policyNumber="ID-POL-2025-001234"
+                        timeRemaining="Sisa waktu: 23 jam 15 menit"
+                        onMonitoring={() => {
+                            // Handle monitoring
+                        }}
+                    />
+                </View>
+
+                {/* Recent Activity Section */}
+                <View className="px-4 mt-8 mb-4">
+                    <Text className="text-light text-xl font-bold mb-4">Aktivitas Terbaru</Text>
+                    <View className="bg-dark/50 border border-secondary/20 rounded-2xl p-4">
+                        <ActivityItem
+                            icon="check-circle"
+                            title="Claim dibayarkan"
+                            subtitle="2 hari yang lalu"
+                            amount={50}
+                            isPositive={true}
+                        />
+                        <View className="border-t border-secondary/10" />
+                        <ActivityItem
+                            icon="file-document"
+                            title="Pembelian Polis"
+                            subtitle="3 hari yang lalu"
+                            amount={30}
+                            isPositive={false}
+                        />
+                    </View>
                 </View>
             </ScrollView>
 

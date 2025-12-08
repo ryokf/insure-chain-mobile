@@ -8,7 +8,7 @@ export type ProtectionCardProps = Readonly<{
     priceLabel: string;
     badgeText?: string;
     badgeColor?: 'success' | 'warning';
-    onPressBeli?: () => void;
+    onPressButton?: () => void;
 }>;
 
 const badgeColorMap = {
@@ -23,13 +23,13 @@ export default function ProtectionCard({
     priceLabel,
     badgeText,
     badgeColor = 'warning',
-    onPressBeli,
+    onPressButton,
 }: Readonly<ProtectionCardProps>) {
     return (
-        <View className="bg-dark/50 rounded-2xl p-4 mb-3 border border-secondary/20">
-            <View className="flex-row justify-between items-start mb-3">
+        <View className="bg-white/5 rounded-2xl p-5 mb-3 border border-white/20">
+            <View className="flex-row justify-between items-start mb-4">
                 <View className="flex-1">
-                    <Text className="text-light text-lg font-semibold">{title}</Text>
+                    <Text className="text-light font-semibold">{title}</Text>
                     <Text className="text-light/60 text-sm mt-1">{description}</Text>
                 </View>
                 {badgeText && (
@@ -42,7 +42,7 @@ export default function ProtectionCard({
             <View className="flex-row justify-between items-center">
                 <View className="mb-3">
                     <Text className="text-accent text-2xl font-bold">{price}</Text>
-                    <Text className="text-light/50 text-xs">{priceLabel}</Text>
+                    <Text className="text-light/50 text-sm">{priceLabel}</Text>
                 </View>
 
                 <Pressable className='bg-accent rounded-lg h-8 shadow-none px-2 py-1 min-w-fit justify-center'>
