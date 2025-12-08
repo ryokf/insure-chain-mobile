@@ -1,283 +1,161 @@
-import { Ionicons } from '@expo/vector-icons';
-import React, { useState } from 'react';
-import { ScrollView, Switch, Text, TouchableOpacity, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React from 'react';
+import { Pressable, ScrollView, Switch, Text, View } from 'react-native';
+import GradientHeader from '../../components/GradientHeader';
+import NavBar from '../../components/NavBar';
 
-type SettingItem = {
-    id: string;
-    title: string;
-    subtitle?: string;
-    type: 'toggle' | 'link';
-    value?: boolean;
-    icon?: string;
-};
+export type SettingsPageProps = Readonly<{
+    onNavigate?: (page: 'home' | 'protection' | 'credentials' | 'settings') => void;
+}>;
 
-export default function SettingsPage() {
-    const [toggles, setToggles] = useState({
-        biometric: false,
-    });
+export default function SettingsPage({ onNavigate }: SettingsPageProps) {
+    const [activeTab, setActiveTab] = React.useState<'home' | 'protection' | 'credentials' | 'settings'>('settings');
+    const [notifEnabled, setNotifEnabled] = React.useState(true);
+    const [biometricEnabled, setBiometricEnabled] = React.useState(false);
 
-    const [userProfile] = useState({
-        name: 'Ryo Khrisna Fitriawan',
-        studentId: 'A11.2025.0001',
-        university: 'Institut Teknologi Bandung',
-    });
-
-    const [cantonNetwork] = useState({
-        status: 'Connected',
-        contractAddress: '0xABC123...DEF456',
-        networkType: 'Canton DevNet',
-    });
-
-    const handleToggle = (key: keyof typeof toggles) => {
-        setToggles({
-            ...toggles,
-            [key]: !toggles[key],
-        });
-    };
-
-    const handleNavigate = (destination: string) => {
-        // TODO: Navigate to destination
-        console.log('Navigate to:', destination);
+    const handleTabPress = (tab: 'home' | 'protection' | 'credentials' | 'settings') => {
+        setActiveTab(tab);
+        onNavigate?.(tab);
     };
 
     return (
-        <View className="flex-1 bg-slate-900">
-            <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+        <View className="flex-1 bg-dark">
+            <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 80 }}>
                 {/* Header */}
-                <View className="px-6 pt-8 pb-6">
-                    <Text className="text-white text-3xl font-bold">
-                        Settings
-                    </Text>
-                    <Text className="text-gray-400 text-sm mt-1">
-                        Manage your account and preferences
-                    </Text>
+                <GradientHeader className="px-4 pt-6 pb-8 rounded-b-3xl overflow-hidden">
+                    <Text className="text-light text-2xl font-bold">Settings</Text>
+                    <Text className="text-light/60 text-sm mt-2">Kelola pengaturan akun Anda</Text>
+                </GradientHeader>
+
+                {/* Profile Section */}
+                <View className="px-4 mt-6">
+                    <Text className="text-light text-lg font-bold mb-4">Akun</Text>
+                    <View className="bg-dark/50 border border-secondary/20 rounded-2xl p-4 mb-4">
+                        <View className="flex-row items-center gap-4 mb-4">
+                            <View className="w-12 h-12 rounded-full bg-secondary/20 items-center justify-center">
+                                <MaterialCommunityIcons name="account-circle" size={24} color="#516ac8" />
+                            </View>
+                            <View className="flex-1">
+                                <Text className="text-light font-semibold">Ryo Khrisna Fitriawan</Text>
+                                <Text className="text-light/50 text-xs mt-1">A11.2025.0001</Text>
+                            </View>
+                        </View>
+                        <Pressable className="bg-secondary/20 rounded-lg py-2 items-center">
+                            <Text className="text-secondary text-xs font-semibold">Edit Profil</Text>
+                        </Pressable>
+                    </View>
                 </View>
 
-                {/* Section 1 — Profile */}
-                <SettingsSection title="Profile">
-                    <SettingInfo
-                        title="Name"
-                        value={userProfile.name}
-                        icon="person"
-                    />
-                    <SettingInfo
-                        title="Student ID"
-                        value={userProfile.studentId}
-                        icon="card"
-                    />
-                    <SettingInfo
-                        title="University"
-                        value={userProfile.university}
-                        icon="school"
-                    />
-                </SettingsSection>
+                {/* Security Section */}
+                <View className="px-4 mt-6">
+                    <Text className="text-light text-lg font-bold mb-4">Keamanan</Text>
+                    <View className="bg-dark/50 border border-secondary/20 rounded-2xl overflow-hidden">
+                        {/* Biometric Toggle */}
+                        <View className="flex-row items-center justify-between px-4 py-4">
+                            <View className="flex-row items-center gap-3 flex-1">
+                                <MaterialCommunityIcons name="fingerprint" size={20} color="#516ac8" />
+                                <View>
+                                    <Text className="text-light font-semibold text-sm">Biometric</Text>
+                                    <Text className="text-light/50 text-xs mt-1">Face ID atau Fingerprint</Text>
+                                </View>
+                            </View>
+                            <Switch
+                                value={biometricEnabled}
+                                onValueChange={setBiometricEnabled}
+                                trackColor={{ false: '#1e293b', true: '#516ac8' }}
+                                thumbColor={biometricEnabled ? '#516ac8' : '#64748b'}
+                            />
+                        </View>
+                        
+                        <View className="border-t border-secondary/10" />
+                        
+                        {/* Change Password */}
+                        <Pressable className="flex-row items-center justify-between px-4 py-4">
+                            <View className="flex-row items-center gap-3 flex-1">
+                                <MaterialCommunityIcons name="lock" size={20} color="#516ac8" />
+                                <View>
+                                    <Text className="text-light font-semibold text-sm">Ubah Password</Text>
+                                    <Text className="text-light/50 text-xs mt-1">Update password wallet Anda</Text>
+                                </View>
+                            </View>
+                            <MaterialCommunityIcons name="chevron-right" size={20} color="#64748b" />
+                        </Pressable>
+                        
+                        <View className="border-t border-secondary/10" />
+                        
+                        {/* View Seed Phrase */}
+                        <Pressable className="flex-row items-center justify-between px-4 py-4">
+                            <View className="flex-row items-center gap-3 flex-1">
+                                <MaterialCommunityIcons name="eye" size={20} color="#516ac8" />
+                                <View>
+                                    <Text className="text-light font-semibold text-sm">Lihat Seed Phrase</Text>
+                                    <Text className="text-light/50 text-xs mt-1">Backup kode pemulihan Anda</Text>
+                                </View>
+                            </View>
+                            <MaterialCommunityIcons name="chevron-right" size={20} color="#64748b" />
+                        </Pressable>
+                    </View>
+                </View>
 
-                {/* Section 2 — Security */}
-                <SettingsSection title="Security">
-                    <SettingLink
-                        title="Change Password"
-                        subtitle="Update your wallet password"
-                        icon="lock-closed"
-                        onPress={() => handleNavigate('password')}
-                    />
-                    <SettingToggle
-                        title="Biometric Settings"
-                        subtitle="Use Face ID or fingerprint to unlock"
-                        icon="fingerprint"
-                        value={toggles.biometric}
-                        onToggle={() => handleToggle('biometric')}
-                    />
-                    <SettingLink
-                        title="View Seed Phrase"
-                        subtitle="Backup your recovery phrase"
-                        icon="eye"
-                        onPress={() => handleNavigate('seed-phrase')}
-                    />
-                    <SettingLink
-                        title="Backup Wallet"
-                        subtitle="Export wallet backup file"
-                        icon="download"
-                        onPress={() => handleNavigate('backup')}
-                    />
-                </SettingsSection>
+                {/* Notifications Section */}
+                <View className="px-4 mt-6">
+                    <Text className="text-light text-lg font-bold mb-4">Notifikasi</Text>
+                    <View className="bg-dark/50 border border-secondary/20 rounded-2xl overflow-hidden">
+                        <View className="flex-row items-center justify-between px-4 py-4">
+                            <View className="flex-row items-center gap-3 flex-1">
+                                <MaterialCommunityIcons name="bell" size={20} color="#516ac8" />
+                                <View>
+                                    <Text className="text-light font-semibold text-sm">Notifikasi Push</Text>
+                                    <Text className="text-light/50 text-xs mt-1">Terima update penting</Text>
+                                </View>
+                            </View>
+                            <Switch
+                                value={notifEnabled}
+                                onValueChange={setNotifEnabled}
+                                trackColor={{ false: '#1e293b', true: '#516ac8' }}
+                                thumbColor={notifEnabled ? '#516ac8' : '#64748b'}
+                            />
+                        </View>
+                    </View>
+                </View>
 
-                {/* Section 3 — Canton Network */}
-                <SettingsSection title="Canton Network">
-                    <SettingInfo
-                        title="Network Status"
-                        value={cantonNetwork.status}
-                        icon="wifi"
-                        valueColor={cantonNetwork.status === 'Connected' ? '#10B981' : '#EF4444'}
-                    />
-                    <SettingInfo
-                        title="Contract Address"
-                        value={cantonNetwork.contractAddress}
-                        icon="code"
-                    />
-                    <SettingLink
-                        title="Transaction History"
-                        subtitle="View all blockchain transactions"
-                        icon="time"
-                        onPress={() => handleNavigate('transactions')}
-                    />
-                </SettingsSection>
-
-                {/* Section 4 — About */}
-                <SettingsSection title="About">
-                    <SettingInfo
-                        title="Version"
-                        value="1.0.0 (Beta)"
-                        icon="information-circle"
-                    />
-                    <SettingLink
-                        title="Terms & Privacy"
-                        subtitle="Read our terms and privacy policy"
-                        icon="document-text"
-                        onPress={() => handleNavigate('terms')}
-                    />
-                    <SettingLink
-                        title="Contact Support"
-                        subtitle="Get help from our support team"
-                        icon="mail"
-                        onPress={() => handleNavigate('support')}
-                    />
-                </SettingsSection>
-
-                {/* Spacer */}
-                <View className="h-20" />
+                {/* About Section */}
+                <View className="px-4 mt-6 mb-4">
+                    <Text className="text-light text-lg font-bold mb-4">Tentang</Text>
+                    <View className="bg-dark/50 border border-secondary/20 rounded-2xl overflow-hidden">
+                        <View className="flex-row items-center justify-between px-4 py-4">
+                            <View>
+                                <Text className="text-light font-semibold text-sm">Versi App</Text>
+                                <Text className="text-light/50 text-xs mt-1">1.0.0 (Beta)</Text>
+                            </View>
+                        </View>
+                        
+                        <View className="border-t border-secondary/10" />
+                        
+                        <Pressable className="flex-row items-center justify-between px-4 py-4">
+                            <View className="flex-row items-center gap-3 flex-1">
+                                <MaterialCommunityIcons name="file-document" size={20} color="#516ac8" />
+                                <Text className="text-light font-semibold text-sm">Syarat & Ketentuan</Text>
+                            </View>
+                            <MaterialCommunityIcons name="chevron-right" size={20} color="#64748b" />
+                        </Pressable>
+                        
+                        <View className="border-t border-secondary/10" />
+                        
+                        <Pressable className="flex-row items-center justify-between px-4 py-4">
+                            <View className="flex-row items-center gap-3 flex-1">
+                                <MaterialCommunityIcons name="help-circle" size={20} color="#516ac8" />
+                                <Text className="text-light font-semibold text-sm">Hubungi Support</Text>
+                            </View>
+                            <MaterialCommunityIcons name="chevron-right" size={20} color="#64748b" />
+                        </Pressable>
+                    </View>
+                </View>
             </ScrollView>
+
+            {/* NavBar */}
+            <NavBar activeTab={activeTab} onTabPress={handleTabPress} />
         </View>
     );
 }
 
-function SettingsSection({
-    title,
-    children,
-}: Readonly<{
-    title: string;
-    children: React.ReactNode;
-}>) {
-    return (
-        <View className="px-6 pb-6">
-            <Text className="text-gray-400 text-xs font-semibold uppercase mb-3 px-2">
-                {title}
-            </Text>
-            <View className="bg-slate-800/50 border border-slate-700 rounded-2xl overflow-hidden">
-                {children}
-            </View>
-        </View>
-    );
-}
-
-function SettingToggle({
-    title,
-    subtitle,
-    icon,
-    value,
-    onToggle,
-}: Readonly<{
-    title: string;
-    subtitle: string;
-    icon: string;
-    value: boolean;
-    onToggle: () => void;
-}>) {
-    return (
-        <View className="flex-row items-center justify-between px-4 py-4 border-b border-slate-700 last:border-b-0">
-            <View className="flex-row items-center flex-1 gap-4">
-                <Ionicons name={icon as any} size={20} color="#516ac8" />
-                <View className="flex-1">
-                    <Text className="text-white font-semibold text-sm">
-                        {title}
-                    </Text>
-                    <Text className="text-gray-400 text-xs mt-1">
-                        {subtitle}
-                    </Text>
-                </View>
-            </View>
-            <Switch
-                value={value}
-                onValueChange={onToggle}
-                trackColor={{ false: '#475569', true: '#516ac8' }}
-                thumbColor={value ? '#516ac8' : '#94A3B8'}
-            />
-        </View>
-    );
-}
-
-function SettingInfo({
-    title,
-    value,
-    icon,
-    valueColor,
-}: Readonly<{
-    title: string;
-    value: string;
-    icon: string;
-    valueColor?: string;
-}>) {
-    return (
-        <View className="flex-row items-center justify-between px-4 py-4 border-b border-slate-700 last:border-b-0">
-            <View className="flex-row items-center flex-1 gap-4">
-                <Ionicons name={icon as any} size={20} color="#516ac8" />
-                <View className="flex-1">
-                    <Text className="text-gray-400 text-xs mb-1">
-                        {title}
-                    </Text>
-                    <Text 
-                        className="font-semibold text-sm"
-                        style={{ color: valueColor || '#FFFFFF' }}
-                    >
-                        {value}
-                    </Text>
-                </View>
-            </View>
-        </View>
-    );
-}
-
-function SettingLink({
-    title,
-    subtitle,
-    icon,
-    onPress,
-    isDestructive,
-}: Readonly<{
-    title: string;
-    subtitle: string;
-    icon: string;
-    onPress: () => void;
-    isDestructive?: boolean;
-}>) {
-    return (
-        <TouchableOpacity
-            onPress={onPress}
-            className="flex-row items-center justify-between px-4 py-4 border-b border-slate-700 last:border-b-0"
-        >
-            <View className="flex-row items-center flex-1 gap-4">
-                <Ionicons
-                    name={icon as any}
-                    size={20}
-                    color={isDestructive ? '#FCA5A5' : '#516ac8'}
-                />
-                <View className="flex-1">
-                    <Text
-                        className={`font-semibold text-sm ${
-                            isDestructive ? 'text-red-400' : 'text-white'
-                        }`}
-                    >
-                        {title}
-                    </Text>
-                    <Text className="text-gray-400 text-xs mt-1">
-                        {subtitle}
-                    </Text>
-                </View>
-            </View>
-            <Ionicons
-                name="chevron-forward"
-                size={20}
-                color={isDestructive ? '#FCA5A5' : '#64748B'}
-            />
-        </TouchableOpacity>
-    );
-}

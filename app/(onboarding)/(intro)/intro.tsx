@@ -5,13 +5,17 @@ const introItem: { id: string; mainComponent: React.ReactNode; subComponent?: Re
     {
         id: '1',
         mainComponent: (
-            <Text className="text-7xl font-semibold leading-tight text-light mb-4">
-                Your Digital Identity Wallet
-            </Text>
+            <View className="items-center ">
+                <Image
+                    className="w-72 h-72 mb-6"
+                    source={require('@/assets/Onboard_Affordable.webp')} 
+                    resizeMode="contain"
+                    />
+            </View>
         ),
         subComponent: (
-            <Text className="text-2xl text-gray-300/70">
-                Store verified credentials, request loans, and build reputation — all secured by Canton Network.
+            <Text className="text-3xl text-center text-white mb-4">
+                Buy micro insurance starting from $0.30 for 24 hours. No survey required, activated instantly.
             </Text>
         ),
     },
@@ -21,14 +25,14 @@ const introItem: { id: string; mainComponent: React.ReactNode; subComponent?: Re
             <View className="items-center">
                 <Image
                     className="w-72 h-72 mb-6"
-                    source={require('@/assets/Onboard_Affordable.webp')} 
+                    source={require('@/assets/Onboard_instant.webp')} 
                     resizeMode="contain"
-                />
+                    />
             </View>
         ),
         subComponent: (
-            <Text className="text-5xl text-center text-white mb-4">
-                Tokenized Credentials as Real-World Assets
+            <Text className="text-3xl text-center text-white mb-4">
+                Smart sensors monitor your journey. Simply submit the vehicle condition, assistance and claims are processed automatically.
             </Text>
         ),
     },
@@ -38,31 +42,27 @@ const introItem: { id: string; mainComponent: React.ReactNode; subComponent?: Re
             <View className="items-center">
                 <Image
                     className="w-72 h-72 mb-6"
-                    source={require('@/assets/Onboard_instant.webp')} 
+                    source={require('@/assets/Onboard_Transparent.webp')} 
                     resizeMode="contain"
-                />
+                    />
             </View>
         ),
         subComponent: (
-            <Text className="text-5xl text-center text-white mb-4">
-                Use Your Diploma as Loan Collateral
+            <Text className="text-3xl text-center text-white mb-4">
+                Powered by Lisk Blockchain. Claim history is recorded permanently and transparently.
             </Text>
         ),
     },
     {
         id: '4',
         mainComponent: (
-            <View className="items-center">
-                <Image
-                    className="w-72 h-72 mb-6"
-                    source={require('@/assets/Onboard_Transparent.webp')} 
-                    resizeMode="contain"
-                />
-            </View>
+            <Text className="text-7xl font-semibold text-center leading-tight text-accent mb-4">
+                Ready for a Safe Ride?
+            </Text>
         ),
         subComponent: (
-            <Text className="text-[2.8rem] text-center text-white mb-4">
-                Privacy-Preserving Verification with Zero-Knowledge Proofs
+            <Text className="text-3xl text-center text-white mb-4">
+                Create your digital wallet, activate the sensor, and enjoy peace of mind on every trip with InsureChain.
             </Text>
         ),
     },

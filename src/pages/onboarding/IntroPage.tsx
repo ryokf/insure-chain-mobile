@@ -22,7 +22,7 @@ export default function IntroPage({
     data,
     autoPlay = false,
     intervalMs = 3000,
-    height = screenHeight * 65 / 100,
+    height = screenHeight * 62 / 100,
     onDone,
 }: Props) {
     const scrollX = useRef(new Animated.Value(0)).current;

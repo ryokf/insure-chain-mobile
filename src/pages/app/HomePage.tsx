@@ -26,14 +26,23 @@ const protectionData = [
     },
 ];
 
-export default function HomePage() {
+export type HomePageProps = Readonly<{
+    onNavigate?: (page: 'home' | 'protection' | 'credentials' | 'settings') => void;
+}>;
+
+export default function HomePage({ onNavigate }: HomePageProps) {
     const [activeTab, setActiveTab] = React.useState<'home' | 'protection' | 'credentials' | 'settings'>('home');
+
+    const handleTabPress = (tab: 'home' | 'protection' | 'credentials' | 'settings') => {
+        setActiveTab(tab);
+        onNavigate?.(tab);
+    };
 
     return (
         <View className="flex-1 bg-dark">
             <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 80 }}>
                 {/* Header */}
-                <GradientHeader className="px-4 pt-6 pb-8 rounded-3xl overflow-hidden">
+                <GradientHeader className="px-4 pt-6 pb-8 rounded-b-3xl overflow-hidden">
                     <View className="flex-row justify-between items-start mb-6">
                         <View>
                             <Text className="text-light/60 text-sm">Halo,</Text>
@@ -77,7 +86,7 @@ export default function HomePage() {
                         <ProtectionCard
                             key={index}
                             {...protection}
-                            onPressBeli={() => {
+                            onPressButton={() => {
                                 // Handle purchase
                             }}
                         />
@@ -122,7 +131,7 @@ export default function HomePage() {
             </ScrollView>
 
             {/* NavBar */}
-            <NavBar activeTab={activeTab} onTabPress={setActiveTab} />
+            <NavBar activeTab={activeTab} onTabPress={handleTabPress} />
         </View>
     );
 }

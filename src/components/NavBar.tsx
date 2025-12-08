@@ -9,8 +9,8 @@ export type NavBarProps = Readonly<{
 
 const navTabs = [
     { id: 'home', label: 'Home', icon: 'home' },
-    { id: 'protection', label: 'Protections', icon: 'shield' },
-    { id: 'credentials', label: 'Credentials', icon: 'file-document' },
+    { id: 'protection', label: 'Monitoring', icon: 'shield' },
+    { id: 'credentials', label: 'Claims', icon: 'file-document' },
     { id: 'settings', label: 'Settings', icon: 'cog' },
 ] as const;
 

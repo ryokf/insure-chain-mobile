@@ -34,7 +34,7 @@ export default function WalletCreatedSuccess() {
     };
 
     const onRequestCredential = () => {
-        router.push('/(onboarding)/request-credential');
+        router.push('/(onboarding)/request-credential/' as any);
     };
 
     return (

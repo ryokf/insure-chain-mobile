@@ -1,8 +1,8 @@
-import HomePage from '@/src/pages/app/HomePage'
+import AppPages from '@/src/pages/app'
 import React from 'react'
 
 const Index = () => {
-  return <HomePage />
+  return <AppPages />
 }
 
 export default Index
