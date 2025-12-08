@@ -31,7 +31,7 @@ function SeedPhraseGrid({ words, isBlurred }: SeedPhraseGridProps) {
             columnWrapperStyle={{ gap: 12, marginBottom: 12 }}
             scrollEnabled={false}
             renderItem={({ item }) => (
-                <View className="w-[30%] bg-slate-800/50 border border-slate-700 rounded-lg p-3 items-center justify-center">
+                <View className="w-[30%] bg-dark/50 border border-dark/80 rounded-lg p-3 items-center justify-center">
                     {isBlurred ? (
                         <View className="items-center justify-center">
                             <View className="w-12 h-6 bg-slate-700 rounded opacity-60" />
@@ -69,7 +69,7 @@ export default function ViewSeedPhrase() {
     };
 
     return (
-        <View className="flex-1 bg-slate-900">
+        <View className="flex-1 bg-dark">
             <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
                 {/* Header */}
                 <View className="pt-4 px-6">
@@ -94,7 +94,7 @@ export default function ViewSeedPhrase() {
                     </View>
 
                     {/* Seed Phrase Grid */}
-                    <View className="mb-8 p-4 bg-slate-800/30 rounded-xl border border-slate-700">
+                    <View className="mb-8 p-4 bg-dark/30 rounded-xl border border-dark/80">
                         <SeedPhraseGrid words={DUMMY_SEED_PHRASE} isBlurred={isBlurred} />
                     </View>
 
@@ -103,7 +103,7 @@ export default function ViewSeedPhrase() {
                         <View className="mb-6">
                             <Pressable
                                 onPress={handleReveal}
-                                className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/50 rounded-lg py-4 flex-row items-center justify-center gap-2"
+                                className="bg-cyan-500/20 border border-cyan-500/50 rounded-lg py-4 flex-row items-center justify-center gap-2"
                             >
                                 <Ionicons name="eye" size={20} color="#06B6D4" />
                                 <Text className="text-cyan-400 font-semibold text-base">
@@ -115,7 +115,7 @@ export default function ViewSeedPhrase() {
 
                     {/* Hidden Message */}
                     {isBlurred && (
-                        <View className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 mb-4">
+                        <View className="bg-dark/50 border border-dark/80 rounded-lg p-4 mb-4">
                             <Text className="text-gray-400 text-center text-sm">
                                 Make sure no one is watching your screen before revealing your phrase.
                             </Text>

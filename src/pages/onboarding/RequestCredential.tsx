@@ -1,5 +1,4 @@
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import {
@@ -119,16 +118,15 @@ export default function RequestCredential() {
     };
 
     return (
-        <View className="flex-1 bg-slate-900">
+        <View className="flex-1 bg-dark">
             <ScrollView
                 className="flex-1"
                 showsVerticalScrollIndicator={false}
                 keyboardShouldPersistTaps="handled"
             >
                 {/* Header */}
-                <LinearGradient
-                    colors={['#818CF8', '#6366F1']}
-                    className="pt-12 pb-8 px-6"
+                <View
+                    className="bg-primary pt-12 pb-8 px-6"
                 >
                     <TouchableOpacity
                         onPress={() =>
@@ -146,7 +144,7 @@ export default function RequestCredential() {
                     <Text className="text-white text-3xl font-bold mb-2">
                         Request Credential
                     </Text>
-                    <Text className="text-indigo-100 text-base">
+                    <Text className="text-secondary/80 text-base">
                         Submit your academic credential for verification
                     </Text>
 
@@ -187,7 +185,7 @@ export default function RequestCredential() {
                             Review
                         </Text>
                     </View>
-                </LinearGradient>
+                </View>
 
                 {/* Step 1: Personal Information */}
                 {step === 1 && (
@@ -202,7 +200,7 @@ export default function RequestCredential() {
                                 Full Name *
                             </Text>
                             <TextInput
-                                className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white"
+                                className="bg-dark/50 border border-dark/80 rounded-xl px-4 py-3 text-white"
                                 placeholder="Enter your full name"
                                 placeholderTextColor="#6B7280"
                                 value={formData.fullName}
@@ -218,7 +216,7 @@ export default function RequestCredential() {
                                 Student ID *
                             </Text>
                             <TextInput
-                                className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white"
+                                className="bg-dark/50 border border-dark/80 rounded-xl px-4 py-3 text-white"
                                 placeholder="Enter your student ID"
                                 placeholderTextColor="#6B7280"
                                 value={formData.studentId}
@@ -242,7 +240,7 @@ export default function RequestCredential() {
                                         !showUniversityPicker
                                     )
                                 }
-                                className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 flex-row items-center justify-between"
+                                className="bg-dark/50 border border-dark/80 rounded-xl px-4 py-3 flex-row items-center justify-between"
                             >
                                 <Text
                                     className={
@@ -268,7 +266,7 @@ export default function RequestCredential() {
 
                             {/* University Picker */}
                             {showUniversityPicker && (
-                                <View className="mt-2 bg-slate-800 border border-slate-700 rounded-xl overflow-hidden">
+                                <View className="mt-2 bg-dark/50 border border-dark/80 rounded-xl overflow-hidden">
                                     {UNIVERSITIES.map((uni, index) => (
                                         <TouchableOpacity
                                             key={uni.id}
@@ -277,7 +275,7 @@ export default function RequestCredential() {
                                             }
                                             className={`px-4 py-3 flex-row items-center justify-between ${
                                                 index < UNIVERSITIES.length - 1
-                                                    ? 'border-b border-slate-700'
+                                                    ? 'border-b border-dark/80'
                                                     : ''
                                             }`}
                                         >
@@ -304,15 +302,15 @@ export default function RequestCredential() {
                         </View>
 
                         {/* Info Box */}
-                        <View className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 mb-6">
+                        <View className="bg-secondary/10 border border-secondary/30 rounded-xl p-4 mb-6">
                             <View className="flex-row items-start">
                                 <Ionicons
                                     name="information-circle"
                                     size={20}
-                                    color="#3B82F6"
+                                    color="#516ac8"
                                     style={{ marginTop: 2, marginRight: 8 }}
                                 />
-                                <Text className="text-blue-300 text-sm flex-1">
+                                <Text className="text-secondary/80 text-sm flex-1">
                                     Your information will be sent to the
                                     university for verification. Make sure all
                                     details are accurate.
@@ -323,9 +321,9 @@ export default function RequestCredential() {
                         {/* Next Button */}
                         <TouchableOpacity
                             onPress={handleNext}
-                            className="bg-indigo-500 rounded-xl py-4"
+                            className="bg-accent rounded-xl py-4"
                         >
-                            <Text className="text-white text-center font-semibold text-base">
+                            <Text className="text-dark text-center font-semibold text-base">
                                 Next
                             </Text>
                         </TouchableOpacity>
@@ -345,7 +343,7 @@ export default function RequestCredential() {
                                 Degree *
                             </Text>
                             <TextInput
-                                className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white"
+                                className="bg-dark/50 border border-dark/80 rounded-xl px-4 py-3 text-white"
                                 placeholder="e.g., Bachelor of Science"
                                 placeholderTextColor="#6B7280"
                                 value={formData.degree}
@@ -361,7 +359,7 @@ export default function RequestCredential() {
                                 Major / Field of Study *
                             </Text>
                             <TextInput
-                                className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white"
+                                className="bg-dark/50 border border-dark/80 rounded-xl px-4 py-3 text-white"
                                 placeholder="e.g., Computer Science"
                                 placeholderTextColor="#6B7280"
                                 value={formData.major}
@@ -377,7 +375,7 @@ export default function RequestCredential() {
                                 Graduation Year *
                             </Text>
                             <TextInput
-                                className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white"
+                                className="bg-dark/50 border border-dark/80 rounded-xl px-4 py-3 text-white"
                                 placeholder="e.g., 2024"
                                 placeholderTextColor="#6B7280"
                                 keyboardType="numeric"
@@ -398,7 +396,7 @@ export default function RequestCredential() {
                                 GPA (4.0 scale) *
                             </Text>
                             <TextInput
-                                className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white"
+                                className="bg-dark/50 border border-dark/80 rounded-xl px-4 py-3 text-white"
                                 placeholder="e.g., 3.75"
                                 placeholderTextColor="#6B7280"
                                 keyboardType="decimal-pad"
@@ -430,7 +428,7 @@ export default function RequestCredential() {
                         <View className="flex-row gap-3">
                             <TouchableOpacity
                                 onPress={() => setStep(1)}
-                                className="flex-1 bg-slate-800 border border-slate-700 rounded-xl py-4"
+                                className="flex-1 bg-dark/50 border border-dark/80 rounded-xl py-4"
                             >
                                 <Text className="text-white text-center font-semibold">
                                     Back
@@ -438,9 +436,9 @@ export default function RequestCredential() {
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={handleNext}
-                                className="flex-1 bg-indigo-500 rounded-xl py-4"
+                                className="flex-1 bg-accent rounded-xl py-4"
                             >
-                                <Text className="text-white text-center font-semibold">
+                                <Text className="text-dark text-center font-semibold">
                                     Next
                                 </Text>
                             </TouchableOpacity>
@@ -456,7 +454,7 @@ export default function RequestCredential() {
                         </Text>
 
                         {/* Personal Information */}
-                        <View className="bg-slate-800 border border-slate-700 rounded-xl p-4 mb-4">
+                        <View className="bg-dark/50 border border-dark/80 rounded-xl p-4 mb-4">
                             <Text className="text-gray-400 text-xs font-semibold uppercase mb-3">
                                 Personal Information
                             </Text>
@@ -475,7 +473,7 @@ export default function RequestCredential() {
                         </View>
 
                         {/* Academic Information */}
-                        <View className="bg-slate-800 border border-slate-700 rounded-xl p-4 mb-4">
+                        <View className="bg-dark/50 border border-dark/80 rounded-xl p-4 mb-4">
                             <Text className="text-gray-400 text-xs font-semibold uppercase mb-3">
                                 Academic Information
                             </Text>
@@ -535,7 +533,7 @@ export default function RequestCredential() {
                         <View className="flex-row gap-3">
                             <TouchableOpacity
                                 onPress={() => setStep(2)}
-                                className="flex-1 bg-slate-800 border border-slate-700 rounded-xl py-4"
+                                className="flex-1 bg-dark/50 border border-dark/80 rounded-xl py-4"
                             >
                                 <Text className="text-white text-center font-semibold">
                                     Back
@@ -543,9 +541,9 @@ export default function RequestCredential() {
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={handleSubmit}
-                                className="flex-1 bg-green-500 rounded-xl py-4"
+                                className="flex-1 bg-accent rounded-xl py-4"
                             >
-                                <Text className="text-white text-center font-semibold">
+                                <Text className="text-dark text-center font-semibold">
                                     Submit Request
                                 </Text>
                             </TouchableOpacity>
@@ -565,7 +563,7 @@ function ReviewRow({
     value,
 }: Readonly<{ label: string; value: string }>) {
     return (
-        <View className="flex-row justify-between py-2 border-b border-slate-700 last:border-b-0">
+        <View className="flex-row justify-between py-2 border-b border-dark/80 last:border-b-0">
             <Text className="text-gray-400 text-sm">{label}</Text>
             <Text className="text-white text-sm font-semibold">{value}</Text>
         </View>

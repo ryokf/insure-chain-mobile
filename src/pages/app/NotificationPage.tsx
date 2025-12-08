@@ -111,7 +111,7 @@ export default function NotificationPage() {
             case 'security':
                 return '#EF4444';
             case 'loan':
-                return '#818CF8';
+                return '#516ac8';
             case 'credential':
                 return '#10B981';
             case 'reputation':
@@ -119,7 +119,7 @@ export default function NotificationPage() {
             case 'info':
                 return '#3B82F6';
             default:
-                return '#818CF8';
+                return '#516ac8';
         }
     };
 
@@ -131,7 +131,7 @@ export default function NotificationPage() {
                     <View className="flex-row items-center justify-between mb-4">
                         <View className="flex-row items-center gap-3">
                             <TouchableOpacity onPress={() => router.back()}>
-                                <Ionicons name="chevron-back" size={28} color="#818CF8" />
+                                <Ionicons name="chevron-back" size={28} color="#516ac8" />
                             </TouchableOpacity>
                             <Text className="text-white text-3xl font-bold">
                                 Notifications
@@ -211,7 +211,7 @@ export default function NotificationPage() {
                     ) : (
                         <View className="items-center justify-center py-12">
                             <View className="w-20 h-20 rounded-full bg-primary/20 items-center justify-center mb-4">
-                                <Ionicons name="notifications" size={40} color="#818CF8" />
+                                <Ionicons name="notifications" size={40} color="#516ac8" />
                             </View>
                             <Text className="text-white text-lg font-bold text-center mb-2">
                                 No Notifications

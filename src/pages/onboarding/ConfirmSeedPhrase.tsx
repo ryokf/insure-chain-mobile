@@ -128,7 +128,7 @@ export default function ConfirmSeedPhrase() {
 
     if (!currentQuestion) {
         return (
-            <View className="flex-1 bg-slate-900 items-center justify-center">
+            <View className="flex-1 bg-dark items-center justify-center">
                 <Text className="text-white">Loading...</Text>
             </View>
         );
@@ -138,7 +138,7 @@ export default function ConfirmSeedPhrase() {
     const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
     return (
-        <View className="flex-1 bg-slate-900">
+        <View className="flex-1 bg-dark">
             <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
                 {/* Header with Back Button */}
                 <View className="flex-row items-center px-6 pt-6 pb-4">
@@ -177,7 +177,7 @@ export default function ConfirmSeedPhrase() {
                 {/* Content */}
                 <View className="flex-1 px-6 pb-8">
                     {/* Question Card */}
-                    <View className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 mb-8">
+                    <View className="bg-dark/50 border border-dark/80 rounded-2xl p-6 mb-8">
                         {/* Question Text */}
                         <Text className="text-gray-400 text-sm mb-4">
                             What is word #{currentQuestion.position + 1}?
@@ -192,7 +192,7 @@ export default function ConfirmSeedPhrase() {
                         </View>
 
                         {/* Score Tracker */}
-                        <View className="flex-row items-center justify-center gap-2 py-4 px-4 bg-slate-900/50 rounded-lg">
+                        <View className="flex-row items-center justify-center gap-2 py-4 px-4 bg-dark/80 rounded-lg">
                             <View className="flex-row gap-1">
                                 {questions.map((question) => {
                                     const questionIndex = questions.indexOf(question);

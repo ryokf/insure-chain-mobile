@@ -185,7 +185,7 @@ function SettingToggle({
     return (
         <View className="flex-row items-center justify-between px-4 py-4 border-b border-slate-700 last:border-b-0">
             <View className="flex-row items-center flex-1 gap-4">
-                <Ionicons name={icon as any} size={20} color="#818CF8" />
+                <Ionicons name={icon as any} size={20} color="#516ac8" />
                 <View className="flex-1">
                     <Text className="text-white font-semibold text-sm">
                         {title}
@@ -198,8 +198,8 @@ function SettingToggle({
             <Switch
                 value={value}
                 onValueChange={onToggle}
-                trackColor={{ false: '#475569', true: '#818CF8' }}
-                thumbColor={value ? '#E0E7FF' : '#94A3B8'}
+                trackColor={{ false: '#475569', true: '#516ac8' }}
+                thumbColor={value ? '#516ac8' : '#94A3B8'}
             />
         </View>
     );
@@ -219,7 +219,7 @@ function SettingInfo({
     return (
         <View className="flex-row items-center justify-between px-4 py-4 border-b border-slate-700 last:border-b-0">
             <View className="flex-row items-center flex-1 gap-4">
-                <Ionicons name={icon as any} size={20} color="#818CF8" />
+                <Ionicons name={icon as any} size={20} color="#516ac8" />
                 <View className="flex-1">
                     <Text className="text-gray-400 text-xs mb-1">
                         {title}
@@ -258,7 +258,7 @@ function SettingLink({
                 <Ionicons
                     name={icon as any}
                     size={20}
-                    color={isDestructive ? '#FCA5A5' : '#818CF8'}
+                    color={isDestructive ? '#FCA5A5' : '#516ac8'}
                 />
                 <View className="flex-1">
                     <Text

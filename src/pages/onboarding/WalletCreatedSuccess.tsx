@@ -38,7 +38,7 @@ export default function WalletCreatedSuccess() {
     };
 
     return (
-        <View className="flex-1 bg-slate-900 items-center justify-center px-6">
+        <View className="flex-1 bg-dark items-center justify-center px-6">
             {/* Success Checkmark */}
             <Animated.View
                 style={{
@@ -63,7 +63,7 @@ export default function WalletCreatedSuccess() {
             </View>
 
             {/* Success Details */}
-            <View className="w-full bg-slate-800/50 border border-slate-700 rounded-2xl p-6 mb-12">
+            <View className="w-full bg-dark/50 border border-dark/80 rounded-2xl p-6 mb-12">
                 <SuccessItem
                     icon="checkmark-circle"
                     title="Seed Phrase Verified"
@@ -105,7 +105,7 @@ export default function WalletCreatedSuccess() {
             {/* Action Buttons */}
             <View className="w-full pb-10">
                 <PrimaryButton
-                    title="Request Your First Credential"
+                    title="Request Your First Policy"
                     onPress={onRequestCredential}
                 />
                 <View className="mt-3">

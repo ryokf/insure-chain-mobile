@@ -56,7 +56,7 @@ export default function SetupPassword() {
     };
 
     return (
-        <View className="flex-1 bg-slate-900">
+        <View className="flex-1 bg-dark">
             <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
                 {/* Header with Back Button */}
                 <View className="flex-row items-center px-6 pt-2 pb-4">
@@ -101,7 +101,7 @@ export default function SetupPassword() {
                     </View>
 
                     {/* Password Requirements */}
-                    <View className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 mb-8">
+                    <View className="bg-dark/50 border border-dark/80 rounded-xl p-4 mb-8">
                         <Text className="text-gray-400 text-sm font-semibold mb-3">
                             Password requirements:
                         </Text>

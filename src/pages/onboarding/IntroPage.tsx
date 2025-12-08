@@ -1,4 +1,4 @@
-import { PrimaryButton } from '@/src/components';
+import { PrimaryButton, SecondaryButton } from '@/src/components';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { router } from 'expo-router';
 import React, { useEffect, useRef, useState } from "react";
@@ -117,7 +117,7 @@ export default function IntroPage({
                 {data && data.length > 0 && (
                     <View
                         className="absolute left-0 right-0 flex-row justify-center items-center gap-2"
-                        style={{ top: "79%", zIndex: 10, elevation: 10 }}
+                        style={{ top: "75%", zIndex: 10, elevation: 10 }}
                         pointerEvents="none"
                     >
                         {data.map((item, i) => {
@@ -135,7 +135,7 @@ export default function IntroPage({
                             return (
                                 <Animated.View
                                     key={item.id}
-                                    className="aspect-square w-3 rounded-full bg-primary"
+                                    className="aspect-square w-3 rounded-full bg-accent"
                                     style={{ opacity, transform: [{ scale }] }}
                                 />
                             );
@@ -188,8 +188,13 @@ export default function IntroPage({
                     {
                         index === data.length - 1 && (
                             <View className="px-6 pb-10">
+                            <SecondaryButton
+                            title="Import Existing Wallet"
+                            className="mb-4"
+                            onPress={() => router.push('/(onboarding)/(import-wallet)')}
+                            />
                             <PrimaryButton
-                            title="Get Started"
+                            title="Create New Wallet"
                             className="mb-4"
                             onPress={() => router.push('/(onboarding)/(create-wallet)')}
                             />

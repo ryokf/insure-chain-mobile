@@ -15,7 +15,7 @@ export default function CreateWalletOverview() {
     };
 
     return (
-        <View className="flex-1 bg-slate-900">
+        <View className="flex-1 bg-dark">
             <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
                 {/* Header */}
                 <View className="pt-4 px-6">
@@ -31,7 +31,7 @@ export default function CreateWalletOverview() {
                 <View className="flex-1 px-6 py-8 justify-center">
                     {/* Icon Circle */}
                     <View className="items-center mb-8">
-                        <View className="w-24 h-24 rounded-full bg-gradient-to-b from-blue-500/30 to-cyan-500/20 items-center justify-center mb-6">
+                        <View className="w-24 h-24 rounded-full bg-cyan-500/20 items-center justify-center mb-6">
                             <Ionicons name="wallet" size={48} color="#06B6D4" />
                         </View>
                     </View>

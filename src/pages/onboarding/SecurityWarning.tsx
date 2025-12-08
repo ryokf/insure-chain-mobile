@@ -29,7 +29,7 @@ export default function SecurityWarning() {
     };
 
     return (
-        <View className="flex-1 bg-slate-900">
+        <View className="flex-1 bg-dark">
             <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
                 {/* Header */}
                 <View className="pt-4 px-6">
@@ -45,7 +45,7 @@ export default function SecurityWarning() {
                 <View className="flex-1 px-6 py-4 justify-center">
                     {/* Warning Icon */}
                     <View className="items-center">
-                        <View className="w-24 h-24 rounded-full bg-gradient-to-b from-yellow-500/30 to-orange-500/20 items-center justify-center mb-6">
+                        <View className="w-24 h-24 rounded-full bg-yellow-500/20 items-center justify-center mb-6">
                             <Ionicons name="warning" size={48} color="#F59E0B" />
                         </View>
                     </View>

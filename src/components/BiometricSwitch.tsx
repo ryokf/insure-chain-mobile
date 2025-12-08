@@ -47,8 +47,8 @@ const BiometricSwitch = () => {
                     checkForBiometrics();
                     authenticate();
                 }}
-                    trackColor={{ false: '#475569', true: '#6366F1' }}
-                    thumbColor={authenticated ? '#818CF8' : '#94A3B8'}
+                    trackColor={{ false: '#475569', true: '#516ac8' }}
+                    thumbColor={authenticated ? '#516ac8' : '#94A3B8'}
                 />
             </View>
         </View>
