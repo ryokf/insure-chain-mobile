@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, Pressable } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
+import ClaimCard from '../../components/ClaimCard';
 import GradientHeader from '../../components/GradientHeader';
 import NavBar from '../../components/NavBar';
-import ClaimCard from '../../components/ClaimCard';
 
 type FilterTab = 'urutan' | 'filter';
 

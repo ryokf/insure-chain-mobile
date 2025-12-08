@@ -1,6 +1,6 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { Text, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export type ClaimCardProps = Readonly<{
     claimId: string;
@@ -8,11 +8,11 @@ export type ClaimCardProps = Readonly<{
     policyId: string;
     amount: string;
     status: 'completed' | 'pending' | 'rejected';
-    steps: Array<{
+    steps: {
         label: string;
         time: string;
         completed: boolean;
-    }>;
+    }[];
     actionLabel?: string;
     onAction?: () => void;
 }>;
