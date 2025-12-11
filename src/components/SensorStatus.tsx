@@ -6,6 +6,9 @@ export type SensorStatusProps = Readonly<{
     name: string;
     status: 'aktif' | 'nonaktif' | 'warning';
     onPress?: () => void;
+    onRequestPermission?: () => void;
+    data?: string | null;
+    showRequestButton?: boolean;
     className?: string;
 }>;
 
@@ -34,6 +37,9 @@ export default function SensorStatus({
     name,
     status,
     onPress,
+    onRequestPermission,
+    data,
+    showRequestButton = false,
     className = '',
 }: Readonly<SensorStatusProps>) {
     const config = statusConfig[status];
@@ -55,18 +61,32 @@ export default function SensorStatus({
                 </View>
                 <View className="flex-1">
                     <Text className="text-light font-semibold text-sm">{name}</Text>
+                    {data && (
+                        <Text className="text-light/50 text-xs mt-1">{data}</Text>
+                    )}
                 </View>
             </View>
             
             <View className="flex-row items-center gap-2">
-                <MaterialCommunityIcons 
-                    name={config.icon as any} 
-                    size={18} 
-                    color={config.color} 
-                />
-                <Text className="text-xs font-semibold" style={{ color: config.color }}>
-                    {config.label}
-                </Text>
+                {showRequestButton ? (
+                    <Pressable
+                        onPress={onRequestPermission}
+                        className="bg-secondary/30 px-3 py-1 rounded"
+                    >
+                        <Text className="text-secondary text-xs font-semibold">Akses</Text>
+                    </Pressable>
+                ) : (
+                    <>
+                        <MaterialCommunityIcons 
+                            name={config.icon as any} 
+                            size={18} 
+                            color={config.color} 
+                        />
+                        <Text className="text-xs font-semibold" style={{ color: config.color }}>
+                            {config.label}
+                        </Text>
+                    </>
+                )}
             </View>
         </Pressable>
     );

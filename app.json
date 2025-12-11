@@ -9,7 +9,12 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMotionUsageDescription": "Kami memerlukan akses ke accelerometer untuk mendeteksi kecelakaan",
+        "NSLocationWhenInUseUsageDescription": "Kami memerlukan akses ke GPS untuk melacak lokasi kendaraan Anda saat berkendara",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Kami memerlukan akses ke GPS untuk melacak lokasi kendaraan Anda"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +24,12 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION"
+      ]
     },
     "web": {
       "output": "static",
